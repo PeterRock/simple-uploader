@@ -39,6 +39,9 @@ bower install --save simple-uploader
 ```js
 var uploader = simple.uploader({
   url: '/upload/url',
+  headers: {
+    'X-File-Name': encodeURIComponent(file.name)
+  },
 });
 
 $('#upload-file').on('change', function(e) {
@@ -67,6 +70,9 @@ Number, 3 by default, specify max number of upload connection that can exist sim
 __credential__
 
 bool, mark whether post the cookie.
+
+__headers__
+object, custom header info
 
 
 ## Methods

@@ -1,5 +1,5 @@
 /**
- * simple-uploader v3.0.1
+ * simple-uploader v3.0.2
  * https://github.com/mycolorway/simple-uploader
  *
  * Copyright Mycolorway Design
@@ -31,10 +31,9 @@ SimpleUploader = (function(superClass) {
     params: null,
     fileKey: 'upload_file',
     connectionCount: 3,
-    locales: null
+    locales: null,
+    credential: false
   };
-
-  SimpleUploader.credential = false;
 
   SimpleUploader.locales = {
     leaveConfirm: 'Are you sure you want to leave?'
@@ -43,7 +42,6 @@ SimpleUploader = (function(superClass) {
   function SimpleUploader(opts) {
     SimpleUploader.__super__.constructor.apply(this, arguments);
     this.opts = $.extend({}, SimpleUploader.opts, opts);
-    this.credential = this.opts.credential;
     this._locales = $.extend({}, SimpleUploader.locales, this.opts.locales);
     this.files = [];
     this.queue = [];
@@ -158,11 +156,9 @@ SimpleUploader = (function(superClass) {
       contentType: false,
       type: 'POST',
       xhrFields: {
-        withCredentials: this.credential
+        withCredentials: !!this.opts.credential
       },
-      headers: {
-        'X-File-Name': encodeURIComponent(file.name)
-      },
+      headers: this.opts.headers,
       xhr: function() {
         var req;
         req = $.ajaxSettings.xhr();

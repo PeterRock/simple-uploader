@@ -1,7 +1,7 @@
 {
   "name": "simple-uploader",
   "githubOwner": "mycolorway",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A HTML5 upload component without UI",
   "keywords": "upload",
   "repository": {

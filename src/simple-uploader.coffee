@@ -8,8 +8,7 @@ class SimpleUploader extends SimpleModule
     fileKey: 'upload_file'
     connectionCount: 3
     locales: null
-
-  @credential: false
+    credential: false
 
   @locales:
     leaveConfirm: 'Are you sure you want to leave?'
@@ -17,7 +16,6 @@ class SimpleUploader extends SimpleModule
   constructor: (opts)->
     super
     @opts = $.extend {}, SimpleUploader.opts, opts
-    @credential = @opts.credential
     @_locales = $.extend {}, SimpleUploader.locales, @opts.locales
 
     @files = [] #files being uploaded
@@ -106,10 +104,9 @@ class SimpleUploader extends SimpleModule
       contentType: false
       type: 'POST',
       xhrFields: {
-        withCredentials: @credential,
+        withCredentials: !!@opts.credential,
       },
-      headers:
-        'X-File-Name': encodeURIComponent(file.name)
+      headers: @opts.headers
       xhr: ->
         req = $.ajaxSettings.xhr()
         if req
