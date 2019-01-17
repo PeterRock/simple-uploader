@@ -38,7 +38,7 @@ bower install --save simple-uploader
 
 ```js
 var uploader = simple.uploader({
-  url: '/upload/url'
+  url: '/upload/url',
 });
 
 $('#upload-file').on('change', function(e) {
@@ -63,6 +63,11 @@ String, specify the name that server will use to get file data.
 __connectionCount__
 
 Number, 3 by default, specify max number of upload connection that can exist simultaneously.
+
+__credential__
+
+bool, mark whether post the cookie.
+
 
 ## Methods
 

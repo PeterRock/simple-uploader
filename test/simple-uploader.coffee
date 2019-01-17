@@ -11,7 +11,7 @@ describe 'SimpleUploader', ->
     ]
 
     @uploader = new SimpleUploader
-      url: '/upload'
+      url: '/upload',
     @file = new Blob ['This is a test file'],
       type: 'text/plain'
 
